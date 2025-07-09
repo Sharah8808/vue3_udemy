@@ -7,7 +7,10 @@ import { ref } from "vue";
     class="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center text-white"
     style="background-image: url('/images/northernmaersmlr.jpg')"
   >
-    <h1 class="text-4xl font-bold">Welcome to My Landing Page</h1>
+  <div class="display">
+
+  </div>
+    <h1 class="text-4xl font-bold">Step Into Otherworldly Adventure</h1>
   </div>
 </template>
 
