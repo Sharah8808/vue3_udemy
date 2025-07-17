@@ -1,6 +1,6 @@
 <template>
-  <nav class="sticky top-0 flex gap-4 p-4 bg-background text-text">
-    <div class="container px-4 mx-auto relative">
+  <nav class="sticky top-0 flex gap-4 py-4 px-40 bg-background text-text">
+    <div class="container relative">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-4">
           <img src="/black-hole.png" alt="Black Hole Icon" class="h-8 w-8" />
@@ -20,6 +20,7 @@
       </div>
     </div>
   </nav>
+
 </template>
 
 <style scoped></style>
