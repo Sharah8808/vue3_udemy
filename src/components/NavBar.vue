@@ -1,5 +1,5 @@
 <template>
-  <nav class="sticky top-0 flex gap-4 py-4 px-40 bg-background text-text">
+  <nav class="sticky top-0 z-50 flex gap-4 py-4 px-40 bg-background text-text">
     <div class="container relative">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-4">
