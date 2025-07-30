@@ -56,6 +56,10 @@ function openWattpad() {
       </div>
     </div>
 
+    <div class="px-40 py-16 text-text">
+      <div class="bg-red-500">bom</div>
+    </div>
+
   </div>
 
 
