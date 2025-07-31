@@ -1,14 +1,6 @@
 <script setup>
 import { onMounted, ref } from "vue";
-import { refo, onMounted } from 'vue'
-import { useRenderLoop } from 'troisjs'
 
-const rotation = refo({ x: 0, y: 0, z: 0 })
-
-// Animasi: putar setiap frame
-useRenderLoop(() => {
-  rotation.value.y += 0.01
-})
 
 function openWattpad() {
   window.open('https://www.wattpad.com/user/SHARAH880', '_blank');
@@ -66,17 +58,7 @@ function openWattpad() {
     </div>
 
     <div class="px-40 py-16 text-text">
-      <Canvas>
-        <PerspectiveCamera :position="{ x: 0, y: 0, z: 5 }" />
-        <OrbitControls /> <!-- Optional biar bisa gerak dengan mouse -->
-        <AmbientLight />
-        <DirectionalLight :position="{ x: 5, y: 5, z: 5 }" />
 
-        <Mesh :rotation="rotation">
-          <BoxGeometry />
-          <MeshStandardMaterial color="skyblue" />
-        </Mesh>
-      </Canvas>
     </div>
 
   </div>
