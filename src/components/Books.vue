@@ -1,8 +1,8 @@
 <template>
-  <div class="h-screen w-screen">
-    <Renderer ref="renderer" resize pointer>
-      <Camera :position="{ z: 200 }" />
-      <OrbitControls :enableZoom="false" />
+  <div class="1080px">
+
+    <Renderer ref="renderer" pointer>
+      <Camera :position="{ z: 500 }" />
       <Scene>
         <AmbientLight color="#808080" />
         <PointLight color="#ff6000" />
