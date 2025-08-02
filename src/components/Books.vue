@@ -1,34 +1,36 @@
 <template>
-  <div class="1080px">
+  <div class="h-screen w-screen">
+    <div class="relative h-full w-full">
+      <Renderer ref="renderer" resize="false" pointer>
+        <Camera :position="{ z: 500 }" />
+        <Scene>
+          <AmbientLight color="#808080" />
+          <PointLight color="#ff6000" />
+          <PointLight ref="light" color="#0060ff" :intensity="0.5" />
+          <PointLight color="#ff6000" :intensity="0.5" :position="{ x: 100 }" />
+          <PointLight color="#0000ff" :intensity="0.5" :position="{ x: -100 }" />
 
-    <Renderer ref="renderer" pointer>
-      <Camera :position="{ z: 500 }" />
-      <Scene>
-        <AmbientLight color="#808080" />
-        <PointLight color="#ff6000" />
-        <PointLight ref="light" color="#0060ff" :intensity="0.5" />
-        <PointLight color="#ff6000" :intensity="0.5" :position="{ x: 100 }" />
-        <PointLight color="#0000ff" :intensity="0.5" :position="{ x: -100 }" />
+          <InstancedMesh ref="imesh" :count="NUM_INSTANCES">
+            <BoxGeometry :width="2" :height="2" :depth="10" />
+            <StandardMaterial :props="{ transparent: true, opacity: 0.9, metalness: 0.8, roughness: 0.5 }" />
+          </InstancedMesh>
 
-        <InstancedMesh ref="imesh" :count="NUM_INSTANCES">
-          <BoxGeometry :width="2" :height="2" :depth="10" />
-          <StandardMaterial :props="{ transparent: true, opacity: 0.9, metalness: 0.8, roughness: 0.5 }" />
-        </InstancedMesh>
-
-        <Text text="Books" font-src="/assets/helvetiker_regular.typeface.json" align="center" :size="30" :height="5"
-          :position="{ x: 0, y: 0, z: 0 }" :cast-shadow="true">
-          <PhongMaterial />
-        </Text>
-      </Scene>
-      <EffectComposer>
-        <RenderPass />
-        <UnrealBloomPass :strength="1" />
-        <HalftonePass :radius="1" :scatter="0" />
-      </EffectComposer>
-    </Renderer>
-    <div>
-      booya
+          <Text text="Books" font-src="/assets/helvetiker_regular.typeface.json" align="center" :size="30" :height="5"
+            :position="{ x: 0, y: 0, z: 0 }" :cast-shadow="true">
+            <PhongMaterial />
+          </Text>
+        </Scene>
+        <EffectComposer>
+          <RenderPass />
+          <UnrealBloomPass :strength="1" />
+          <HalftonePass :radius="1" :scatter="0" />
+        </EffectComposer>
+      </Renderer>
     </div>
+  </div>
+
+  <div>
+    booya
   </div>
 
 </template>
@@ -98,12 +100,20 @@ export default {
     };
   },
   mounted() {
-    this.renderer = this.$refs.renderer;
-    this.imesh = this.$refs.imesh.mesh;
-    this.light = this.$refs.light.light;
-    this.init();
+    this.renderer = this.$refs.renderer
+    this.imesh = this.$refs.imesh.mesh
+    this.light = this.$refs.light.light
 
+    const width = window.innerWidth
+    const height = window.innerHeight
+
+    const gl = this.renderer.three.renderer // 🔥 Akses WebGLRenderer asli
+    gl.setSize(width, height)
+    gl.setPixelRatio(window.devicePixelRatio)
+
+    this.init()
   },
+
   methods: {
     init() {
       // init instanced mesh matrix
